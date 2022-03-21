@@ -29,7 +29,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    useMeta(() => ({ title: '取引先一覧' }))
+    useMeta(() => ({ title: title.value }))
     const title = computed(() =>
       props.error.statusCode === 404
         ? 'お探しのページは見つかりませんでした。'
