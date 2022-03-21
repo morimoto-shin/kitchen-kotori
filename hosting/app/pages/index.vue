@@ -59,7 +59,6 @@ export default defineComponent({
   margin-bottom: 100px;
 }
 .content_title {
-  font-family: 'serif';
   font-size: 30px;
 }
 .content_text {
