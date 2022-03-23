@@ -10,7 +10,7 @@
         <v-col cols="12" align="center">
           <v-card class="error_card pa-4">
             <v-card-title>{{ title }}</v-card-title>
-            <v-btn outline dark color="blue" to="/"> ホームページへ</v-btn>
+            <v-btn outlined dark color="blue" to="/"> ホームページへ</v-btn>
           </v-card>
         </v-col>
       </v-row>
@@ -29,12 +29,12 @@ export default defineComponent({
     },
   },
   setup(props) {
-    useMeta(() => ({ title: title.value }))
     const title = computed(() =>
       props.error.statusCode === 404
         ? 'お探しのページは見つかりませんでした。'
         : '原因不明のエラーが発生しました。'
     )
+    useMeta(() => ({ title: title.value }))
     return {
       title,
     }
