@@ -13,6 +13,7 @@ type Menu = {
   img: string
   description: string
   type: Type
+  price: number
 }
 
 export { MenuType, Type, Menu }

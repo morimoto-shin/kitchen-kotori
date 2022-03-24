@@ -53,6 +53,8 @@ export default defineComponent({
       state.menus = await fetchMenu()
     }
 
+    $_fetchMenu()
+
     return {
       pageTitle,
       state,

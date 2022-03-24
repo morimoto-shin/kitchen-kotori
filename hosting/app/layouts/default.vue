@@ -18,7 +18,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar fixed flat app nav>
+    <v-app-bar fixed flat app nav color="white">
       <img src="/icon/logo.svg" width="45px" height="45px" />
       <v-toolbar-title>
         <img src="/icon/logo_text.svg" height="45px" />
@@ -72,7 +72,7 @@ export default defineComponent({
     const title = 'キッチン小鳥'
     const headerItems = [
       {
-        icon: 'mdi-home-outline',
+        icon: 'mdi-home',
         title: 'HOME',
         to: '/',
       },
