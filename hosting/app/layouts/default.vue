@@ -18,7 +18,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar fixed flat app nav color="white">
+    <v-app-bar fixed flat app nav color="white" src="img/bg_wood.png">
       <img src="/icon/logo.svg" width="45px" height="45px" />
       <v-toolbar-title>
         <img src="/icon/logo_text.svg" height="45px" />
@@ -29,9 +29,9 @@
     <v-main>
       <Nuxt />
     </v-main>
-    <v-btn class="fixed_btn" x-large icon retain-focus-on-click to="/"
+    <v-btn class="fixed_btn" large icon retain-focus-on-click to="/"
       ><!-- 電話番号追加 -->
-      <v-icon dark large color="white">mdi-phone-outgoing</v-icon>
+      <v-icon>mdi-phone</v-icon>
     </v-btn>
     <v-footer class="pa-0 ma-0">
       <v-card
@@ -119,7 +119,7 @@ export default defineComponent({
   font-size: 18px;
 }
 .fixed_btn {
-  background: #0b3364;
+  background: rgba(142, 142, 142, 0.2);
   padding: 4px;
   position: fixed;
   right: 50px;
