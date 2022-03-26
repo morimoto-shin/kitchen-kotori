@@ -9,13 +9,45 @@ export default {
     titleTemplate: '%s - app',
     title: 'app',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'ja',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          '岡山県・津山市カフェ/キッチン小鳥/キッチン小鳥　ランチ テイクアウトあります。',
+      },
+      {
+        name: 'keyword',
+        content: 'キッチン小鳥,きっちん小鳥,岡山,津山,カフェ,県北,ランチ',
+      },
+      { hid: 'og-url', property: 'og:url', content: 'URL' }, // contentに本番URLを記述
+      {
+        hid: 'og-site-name',
+        property: 'og:site_name',
+        content: 'キッチン小鳥',
+      },
+      {
+        hid: 'og-title',
+        property: 'og:title',
+        content: 'キッチン小鳥 - 岡山県津山市カフェ -',
+      },
+      { hid: 'og-type', property: 'og:type', content: 'website' },
+      {
+        hid: 'og-description',
+        property: 'og:description',
+        content:
+          'スイーツからカフェご飯まで、手作りの味をいただける「キッチン小鳥」。野菜の旬に合わせた季節メニュー、デザートメニュー、子ども用メニューもあり、さまざまなシーンで「小鳥」の味を楽しめる。',
+      },
+      {
+        hid: 'og-image',
+        property: 'og:image',
+        content: '@/static/img/home_1.png',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
