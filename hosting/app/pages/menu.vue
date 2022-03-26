@@ -16,11 +16,11 @@ import {
   defineComponent,
   useMeta,
   reactive,
-  useStore,
   onMounted,
 } from '@nuxtjs/composition-api'
 import PageTitle from '@/components/common/PageTitle.vue'
 import MenuCard from '@/components/menu/MenuCard.vue'
+import { fetchMenu } from '@/api/menu'
 import { Menu } from '@/types/Menu'
 
 type State = {
@@ -33,8 +33,6 @@ export default defineComponent({
     MenuCard,
   },
   setup() {
-    const store = useStore()
-
     const pageTitle = 'MENU' as const
     useMeta(() => ({ title: 'メニュー | カフェ | 岡山県津山市' }))
 
@@ -42,15 +40,20 @@ export default defineComponent({
       menus: [],
     })
 
-    state.menus = store.getters['menus/getMenu'] as Menu[]
-
     onMounted(async () => {
       try {
-        await store.dispatch('menus/getMenu')
+        await $_fetchMenu()
       } catch (e) {
         console.log(e)
       }
     })
+
+    // eslint-disable-next-line camelcase
+    const $_fetchMenu = async () => {
+      state.menus = await fetchMenu()
+    }
+
+    $_fetchMenu()
 
     return {
       pageTitle,
