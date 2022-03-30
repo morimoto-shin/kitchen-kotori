@@ -2,19 +2,17 @@
   <div>
     <v-container fluid pre class="pa-0">
       <v-card tile elevation="0">
-        <div class="">
-          <v-card-text>
-            <v-row class="" align="center">
-              <span class="menu_bar_title"
-                ><v-btn icon class="mr-2" @click="changeShowOverview"
-                  ><img
-                    :class="caretLeftIconClass"
-                    src="/icon/caretLeft.svg" /></v-btn
-                >{{ upperCaseTitle }}</span
-              >
-            </v-row>
-          </v-card-text>
-        </div>
+        <v-card-text>
+          <v-row align="center">
+            <span class="menu_bar_title"
+              ><v-btn icon class="mr-2" @click="changeShowOverview"
+                ><img
+                  :class="caretLeftIconClass"
+                  src="/icon/caretLeft.svg" /></v-btn
+              >{{ upperCaseTitle }}</span
+            >
+          </v-row>
+        </v-card-text>
         <v-divider />
         <v-container class="pa-0">
           <v-expand-transition>
@@ -40,11 +38,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  computed,
-  ref,
-} from '@nuxtjs/composition-api'
+import { defineComponent, computed, ref } from '@nuxtjs/composition-api'
 import DetailMenuDialog from '@/components/menu/DetailMenuDialog.vue'
 import { Menu } from '@/types/Menu'
 

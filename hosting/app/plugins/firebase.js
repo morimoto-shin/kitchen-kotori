@@ -3,6 +3,7 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 import 'firebase/storage'
+import 'firebase/analytics'
 
 if (!firebase.apps.length) {
   let config = {}
@@ -23,7 +24,8 @@ if (!firebase.apps.length) {
       loadTextFileAjaxSync('/__/firebase/init.json', 'application/json')
     )
   }
-  firebase.initializeApp(config)
+  const app = firebase.initializeApp(config)
+  firebase.analytics(app)
 }
 
 export default firebase
