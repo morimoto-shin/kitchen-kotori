@@ -62,10 +62,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from '@nuxtjs/composition-api'
+import {
+  defineComponent,
+  ref,
+  computed,
+  useRoute,
+  useMeta,
+} from '@nuxtjs/composition-api'
 
 export default defineComponent({
   setup() {
+    const route = useRoute()
+
     const currentYear = computed(() => new Date().getFullYear())
     const fixed = false as const
     const drawer = ref(false)
@@ -97,7 +105,19 @@ export default defineComponent({
       'mdi-instagram',
       // 'mdi-paperclip',
       // 'mdi-phone',
-    ]
+    ] as const 
+
+    console.log(route.value.path)
+    const currentPageForCanonical = computed(() => route.value.path.slice(1))
+    useMeta(() => ({
+      link: [
+        {
+          rel: 'canonical',
+          href: `${process.env.BASE_URL}/${currentPageForCanonical.value}`,
+        },
+      ],
+    }))
+
     const switchNav = () => {
       drawer.value = !drawer.value
     }
@@ -111,6 +131,7 @@ export default defineComponent({
       switchNav,
     }
   },
+  head: {},
 })
 </script>
 <style scoped>
