@@ -34,7 +34,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .label {
-  background: #3a3a3a;
+  background: #0B3364;
   height: 40px;
   .label_text {
     font-size: 16px;
