@@ -3,6 +3,7 @@
     overlay-opacity="0.5"
     width="80%"
     max-width="600px"
+    eager
     :value="dialog"
     @click:outside="close"
   >
