@@ -29,10 +29,18 @@
     <v-main>
       <Nuxt />
     </v-main>
-    <v-btn class="fixed_btn" large icon retain-focus-on-click to="/"
-      ><!-- 電話番号追加 -->
-      <v-icon>mdi-phone</v-icon>
-    </v-btn>
+    <div v-if="$vuetify.breakpoint.mobile">
+      <v-btn
+        class="fixed_btn"
+        large
+        icon
+        retain-focus-on-click
+        href="tel:0868-32-8129"
+      >
+        <v-icon color="primary">mdi-phone</v-icon>
+      </v-btn>
+    </div>
+
     <v-footer class="pa-0 ma-0">
       <v-card
         flat
@@ -44,14 +52,16 @@
       >
         <v-card-text>
           <v-btn
-            v-for="icon in snsIcons"
-            :key="icon"
+            v-for="sns in snsIcons"
+            :key="sns.icon"
             class="mx-4"
             icon
             color="primary"
+            :href="sns.src"
+            target="_blank"
           >
             <v-icon size="24px">
-              {{ icon }}
+              {{ sns.icon }}
             </v-icon>
           </v-btn>
         </v-card-text>
@@ -101,11 +111,14 @@ export default defineComponent({
       },
     ] as const
     const snsIcons = [
-      'mdi-facebook',
-      'mdi-instagram',
-      // 'mdi-paperclip',
-      // 'mdi-phone',
-    ] as const 
+      {
+        icon: 'mdi-instagram',
+        src: 'https://www.instagram.com/kitchen_kotori/',
+      },
+      { icon: 'mdi-facebook', src: 'https://www.facebook.com/kitchenKotori' },
+      // { icon: 'mdi-paperclip', src: ''}
+      // { icon: 'mdi-phone', src: ''}
+    ] as const
 
     console.log(route.value.path)
     const currentPageForCanonical = computed(() => route.value.path.slice(1))
