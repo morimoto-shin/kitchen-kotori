@@ -9,7 +9,7 @@ module.exports = {
       tsconfig: './tsconfig.json',
     },
     {
-      root: './hosting/backyard',
+      root: './hosting/admin',
       package: './package.json',
       tsconfig: './tsconfig.json',
     },
