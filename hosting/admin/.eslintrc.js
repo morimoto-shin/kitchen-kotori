@@ -11,5 +11,9 @@ module.exports = {
   ],
   plugins: [],
   // add your custom rules here
-  rules: {},
+  rules: {
+    'vue/multi-word-component-names': 0,
+    'no-console': 'off', // TODO 一旦無効にするけど、ロガー入れたら有効にするぞ
+    'import/no-duplicates': 'off',
+  },
 }
