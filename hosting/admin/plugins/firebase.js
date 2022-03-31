@@ -30,6 +30,11 @@ if (!firebase.apps.length) {
 
 export default firebase
 
+// 認証方法
+export const authProviders = {
+  Email: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+}
+
 export const auth = firebase.auth()
 export const storage = firebase.storage()
 export const db = firebase.firestore()
