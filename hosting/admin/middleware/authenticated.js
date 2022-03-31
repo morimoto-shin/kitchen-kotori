@@ -1,9 +1,8 @@
 import { auth } from '~/plugins/firebase'
 
-export default function ({ route, store, redirect }) {
+export default function ({ route, redirect }) {
   auth.onAuthStateChanged((user) => {
     if (user) {
-      store.dispatch('auth/saveAuthInfo', { user })
       if (route.name === 'login') {
         redirect('/')
       }
