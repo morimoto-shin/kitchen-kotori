@@ -1,6 +1,6 @@
 import { storage } from '~/plugins/firebase'
 
-const upload = async (filePath: string, filePayload: File) => {
+const uploadFile = async (filePath: string, filePayload: File) => {
   try {
     if (!filePath) {
       throw new Error('filePath is required')
@@ -13,7 +13,7 @@ const upload = async (filePath: string, filePayload: File) => {
   }
 }
 
-const deleteDoc = async (filePath: string) => {
+const deleteFile = async (filePath: string) => {
   try {
     console.log('ファイル削除', filePath)
     const ref = storage.ref(filePath)
@@ -25,4 +25,4 @@ const deleteDoc = async (filePath: string) => {
   }
 }
 
-export { upload, deleteDoc }
+export { uploadFile, deleteFile }

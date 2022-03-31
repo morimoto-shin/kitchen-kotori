@@ -21,9 +21,9 @@ const updateMenu = async (menu: Menu) => {
   return await firebase.firestore().collection('menus').doc(doc.id).update(doc)
 }
 
-const deleteMenuDoc = async (menu: Menu) => {
+const deleteMenu = async (menu: Menu) => {
   const doc = menu
   return await firebase.firestore().collection('menus').doc(doc.id).delete()
 }
 
-export { fetchMenu, addMenu, updateMenu, deleteMenuDoc }
+export { fetchMenu, addMenu, updateMenu, deleteMenu }

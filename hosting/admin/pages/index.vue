@@ -14,7 +14,7 @@
           :menus="state.menus"
           :loading="state.loading"
           @open-edit-dialog="openEditMenuDialog"
-          @remove="deleteMenu"
+          @remove="$_delete"
         />
       </v-col>
     </v-row>
