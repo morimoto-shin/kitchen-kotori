@@ -1,6 +1,8 @@
 import { onMounted, reactive } from '@nuxtjs/composition-api'
 
 import { fetchMenu, addMenu, updateMenu, deleteMenuDoc } from '~/api/menu'
+import { upload, deleteDoc } from '~/api/storage'
+
 import { useCreateMenuDialog } from '~/components/dialog/useCreateMenuDialog'
 import { useEditMenuDialog } from '~/components/dialog/useEditMenuDialog'
 
@@ -50,17 +52,21 @@ const useIndex = () => {
     state.menus = await fetchMenu()
   }
 
-  const add = async (menu: Menu) => {
+  const add = async (menu: Menu, filePayload: File) => {
+    menu.img = await upload(`menu/${menu.id},`, filePayload)
     await addMenu(menu)
     await $_fetchMenu()
   }
 
-  const update = async (menu: Menu) => {
+  const update = async (menu: Menu, filePayload: File) => {
+    if (menu.img) await deleteDoc(menu.img)
+    menu.img = await upload(`menu/${menu.id}`, filePayload)
     await updateMenu(menu)
     await $_fetchMenu()
   }
 
   const deleteMenu = async (menu: Menu) => {
+    await deleteDoc(menu.img)
     await deleteMenuDoc(menu)
     await $_fetchMenu()
   }

@@ -52,6 +52,22 @@
           <v-row dense class="justify-center">
             <v-col cols="4">
               <v-subheader>
+                <span class="font-weight-bold">画像</span>
+              </v-subheader>
+            </v-col>
+            <v-col cols="8">
+              <v-file-input
+                v-model="filePayload"
+                prepend-icon=""
+                accept="image/*"
+                outlined
+                dense
+              />
+            </v-col>
+          </v-row>
+          <v-row dense class="justify-center">
+            <v-col cols="4">
+              <v-subheader>
                 <span class="font-weight-bold">タイプ</span>
               </v-subheader>
             </v-col>
@@ -99,6 +115,7 @@ export default defineComponent<EditMenuDialogProps>({
   },
   setup(props, { emit }) {
     const editState = ref(defaultEmptyMenu)
+    const filePayload = ref()
     watch(
       () => props.menu,
       () => {
@@ -111,7 +128,7 @@ export default defineComponent<EditMenuDialogProps>({
     }
 
     const update = () => {
-      emit('update', editState.value)
+      emit('update', editState.value, filePayload)
       close()
     }
 
@@ -120,6 +137,7 @@ export default defineComponent<EditMenuDialogProps>({
       close,
       update,
       TypeList,
+      filePayload,
     }
   },
 })

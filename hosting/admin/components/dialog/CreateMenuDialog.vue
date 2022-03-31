@@ -52,7 +52,23 @@
           <v-row dense class="justify-center">
             <v-col cols="4">
               <v-subheader>
-                <span class="font-weight-bold">タオぴ</span>
+                <span class="font-weight-bold">画像</span>
+              </v-subheader>
+            </v-col>
+            <v-col cols="8">
+              <v-file-input
+                v-model="filePayload"
+                prepend-icon=""
+                accept="image/*"
+                outlined
+                dense
+              />
+            </v-col>
+          </v-row>
+          <v-row dense class="justify-center">
+            <v-col cols="4">
+              <v-subheader>
+                <span class="font-weight-bold">タイプ</span>
               </v-subheader>
             </v-col>
             <v-col cols="8">
@@ -94,6 +110,7 @@ export default defineComponent<CreateMenuDialogProps>({
   },
   setup(props, { emit }) {
     const menu = ref(defaultEmptyMenu)
+    const filePayload = ref()
 
     watch(
       () => props.value,
@@ -107,7 +124,7 @@ export default defineComponent<CreateMenuDialogProps>({
     }
 
     const create = () => {
-      emit('create', menu.value)
+      emit('create', menu.value, filePayload)
       close()
     }
 
@@ -116,6 +133,7 @@ export default defineComponent<CreateMenuDialogProps>({
       close,
       create,
       TypeList,
+      filePayload,
     }
   },
 })
