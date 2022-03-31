@@ -42,7 +42,7 @@
               </v-subheader>
             </v-col>
             <v-col cols="8">
-              <v-text-field
+              <v-textarea
                 v-model="editState.description"
                 outlined
                 placeholder="これは日替わりランチです。"

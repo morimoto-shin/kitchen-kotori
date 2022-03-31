@@ -42,7 +42,7 @@
               </v-subheader>
             </v-col>
             <v-col cols="8">
-              <v-text-field
+              <v-textarea
                 v-model="menu.description"
                 outlined
                 placeholder="メニュー説明"
