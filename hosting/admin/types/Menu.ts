@@ -5,6 +5,8 @@ const MenuType = {
   Takeout: 'takeout',
 } as const
 
+const TypeList = ['launch', 'drink', 'dessert', 'takeout']
+
 type Type = typeof MenuType[keyof typeof MenuType]
 
 type Menu = {
@@ -25,4 +27,4 @@ const defaultEmptyMenu: Menu = {
   price: 0,
 }
 
-export { MenuType, Type, Menu, defaultEmptyMenu }
+export { MenuType, Type, TypeList, Menu, defaultEmptyMenu }
