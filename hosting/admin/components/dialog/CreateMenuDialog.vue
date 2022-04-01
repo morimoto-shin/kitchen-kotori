@@ -58,10 +58,8 @@
             <v-col cols="8">
               <v-file-input
                 v-model="filePayload"
-                prepend-icon=""
                 accept="image/*"
-                outlined
-                dense
+                prepend-icon="mdi-image"
               />
             </v-col>
           </v-row>
@@ -124,7 +122,7 @@ export default defineComponent<CreateMenuDialogProps>({
     }
 
     const create = () => {
-      emit('create', menu.value, filePayload)
+      emit('create')
       close()
     }
 

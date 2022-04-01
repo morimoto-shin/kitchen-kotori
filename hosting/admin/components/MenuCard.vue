@@ -62,22 +62,27 @@ export default defineComponent<MenuTableProps>({
       {
         text: '名前',
         value: 'name',
+        width: '20%',
       },
       {
         text: '値段',
         value: 'price',
+        width: '10%',
       },
       {
         text: 'タイプ',
         value: 'type',
+        width: '10%',
       },
       {
         text: '説明',
         value: 'description',
+        width: '50%',
       },
       {
         text: 'アクション',
         value: 'actions',
+        width: '10%',
         cellClass: 'px-0',
         sortable: false,
       },

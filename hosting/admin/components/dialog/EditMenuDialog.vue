@@ -58,11 +58,18 @@
             <v-col cols="8">
               <v-file-input
                 v-model="filePayload"
-                prepend-icon=""
                 accept="image/*"
-                outlined
-                dense
+                prepend-icon="mdi-image"
+                @change="setImage"
               />
+            </v-col>
+          </v-row>
+          <v-row dense class="justify-center">
+            <v-col cols="4"></v-col>
+            <v-col cols="8">
+              <v-alert type="error" color="primary" dense>
+                画像を変更後は必ず保存してください
+              </v-alert>
             </v-col>
           </v-row>
           <v-row dense class="justify-center">
@@ -82,6 +89,14 @@
               ></v-select>
             </v-col>
           </v-row>
+          <v-row dense class="justify-center">
+            <v-col cols="3">
+              <h3>画像のプレビュー</h3>
+            </v-col>
+            <v-col cols="12">
+              <v-img :src="editState.img" />
+            </v-col>
+          </v-row>
         </v-container>
       </v-card-text>
       <v-card-actions class="justify-center">
@@ -94,6 +109,8 @@
 
 <script lang="ts">
 import { defineComponent, ref, watch } from '@nuxtjs/composition-api'
+
+import { uploadFile, deleteFile } from '~/api/storage'
 
 import { defaultEmptyMenu, Menu, TypeList } from '~/types/Menu'
 
@@ -123,12 +140,25 @@ export default defineComponent<EditMenuDialogProps>({
       }
     )
 
+    const setImage = async (file: File) => {
+      if (editState.value.img) {
+        console.log(`menu/${editState.value.id}`)
+        await deleteFile(`menu/${editState.value.id}`)
+      }
+      if (!file) {
+        editState.value.img = ''
+        return
+      }
+      const fileUrl = await uploadFile(`menu/${editState.value.id}`, file)
+      editState.value.img = fileUrl
+    }
+
     const close = () => {
       emit('close')
     }
 
     const update = () => {
-      emit('update', editState.value, filePayload)
+      emit('update', JSON.parse(JSON.stringify(editState.value)))
       close()
     }
 
@@ -138,6 +168,7 @@ export default defineComponent<EditMenuDialogProps>({
       update,
       TypeList,
       filePayload,
+      setImage,
     }
   },
 })

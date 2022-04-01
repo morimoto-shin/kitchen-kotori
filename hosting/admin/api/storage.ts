@@ -1,11 +1,8 @@
 import { storage } from '~/plugins/firebase'
 
-const uploadFile = async (filePath: string, filePayload: File) => {
+const uploadFile = async (filePath: string, file: File) => {
   try {
-    if (!filePath) {
-      throw new Error('filePath is required')
-    }
-    const uploadTask = await storage.ref(filePath).put(filePayload)
+    const uploadTask = await storage.ref(filePath).put(file)
     const imageUrl = await uploadTask.ref.getDownloadURL()
     return imageUrl
   } catch (error) {
