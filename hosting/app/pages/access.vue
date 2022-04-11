@@ -1,25 +1,33 @@
 <template>
-  <v-row>
-    <v-col class="text-center">
-      <img
-        src="/v.png"
-        alt="Vuetify.js"
-        class="mb-5"
-      >
-      <blockquote class="blockquote">
-        &#8220;First, solve the problem. Then, write the code.&#8221;
-        <footer>
-          <small>
-            <em>&mdash;John Johnson</em>
-          </small>
-        </footer>
-      </blockquote>
-    </v-col>
-  </v-row>
+  <v-container class="pa-0 home_container">
+    <PageTitle class="mt-2" :page-title="pageTitle" />
+    <v-row justify="center" align="center">
+      <v-spacer />
+      <v-col cols="8" md="6" align="center">
+        <AccessSheet class="my-2" />
+      </v-col>
+      <v-spacer />
+    </v-row>
+  </v-container>
 </template>
 
-<script>
-export default {
-  name: 'InspirePage'
-}
+<script lang="ts">
+import { defineComponent, useMeta } from '@nuxtjs/composition-api'
+import PageTitle from '@/components/common/PageTitle.vue'
+import AccessSheet from '@/components/access/AccessSheet.vue'
+
+export default defineComponent({
+  components: {
+    PageTitle,
+    AccessSheet,
+  },
+  setup() {
+    const pageTitle = 'ACCESS' as const
+    useMeta(() => ({ title: 'アクセス | カフェ | 岡山県津山市' }))
+    return {
+      pageTitle,
+    }
+  },
+  head: {},
+})
 </script>
