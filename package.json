@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "DEV hosting:app deploy": "cd hosting/app && nuxt generate && firebase deploy -P dev --only hosting:app",
+    "DEV hosting:admin deploy": "cd hosting/admin && nuxt generate && firebase deploy -P dev --only hosting:admin",
+    "DEV firestore deploy": "firebase deploy -P dev --only firestore"
+  }
+}
