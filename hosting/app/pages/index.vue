@@ -1,91 +1,91 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card class="logo py-4 d-flex justify-center"> </v-card>
-      <v-card>
-        <v-card-title class="headline">
-          {{ text }}
-        </v-card-title>
-        <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
+  <div>
+    <v-carousel
+      cycle
+      :height="$vuetify.breakpoint.height - 200"
+      hide-delimiter-background
+      show-arrows-on-hover
+    >
+      <v-carousel-item
+        v-for="item in carouselItems"
+        :key="item.src"
+        :src="item.src"
+      />
+    </v-carousel>
+    <v-container class="pa-0 home_container">
+      <v-row>
+        <v-col cols="2" md="3"></v-col>
+        <v-col cols="8" md="6" align="center">
+          <h1 class="mb-2 content_title">Concept</h1>
+          <v-divider></v-divider>
+          <h3 class="my-4" align="center">
+            スイーツからカフェご飯まで手作りの味を堪能
+          </h3>
+          <p class="content_text">
+            スイーツからカフェご飯まで、手作りの味をいただける「キッチン小鳥」。清潔感のある明るい店内には、店名にちなんでキュートな小鳥の小物が随所に飾られている。地元の新鮮野菜をたっぷり使った料理はヘルシーで、しかもご飯がモリモリ進むと評判だ。自家製の仕込み味噌を使った味噌汁にもファンが多い。野菜の旬に合わせた季節メニュー、デザートメニュー、子ども用メニューもあり、さまざまなシーンで「小鳥」の味を楽しめる。
           </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation </a
-            >.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord </a
-            >.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board </a
-            >.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3" />
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br />
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" nuxt to="/inspire"> Continue </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+        </v-col>
+        <v-col cols="2" md="3"></v-col>
+      </v-row>
+      <v-row>
+        <v-col align="center">
+          <a @click="moveMenuPage">メニューを見る</a>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent, useMeta, useRouter } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   setup() {
-    const text = 'テキストですですでうす'
+    const carouselItems = [
+      { name: 'home_1', src: '/img/home_1.png' },
+      { name: 'home_2', src: '/img/home_2.png' },
+      { name: 'home_3', src: '/img/home_3.png' },
+      { name: 'home_4', src: '/img/home_4.png' },
+      { name: 'home_5', src: '/img/home_5.png' },
+    ]
+
+    const router = useRouter()
+
+    const moveMenuPage = () => {
+      router.push('/menu')
+    }
+
+    useMeta(() => ({ title: 'キッチン小鳥 | 岡山県津山市' }))
+
     return {
-      text,
+      carouselItems,
+      moveMenuPage,
     }
   },
+  head: {},
 })
 </script>
+
+<style lang="scss" scoped>
+.home_container {
+  max-width: 100% !important;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+.content_title {
+  font-size: 30px;
+}
+.content_text {
+  line-height: 30px;
+}
+@media screen and (max-width: 767px) {
+  .carousel {
+    height: 400px;
+  }
+}
+@media screen and (min-width: 767px) {
+  .carousel {
+    height: 800px;
+  }
+}
+</style>
