@@ -88,6 +88,14 @@
               ></v-select>
             </v-col>
           </v-row>
+          <v-row v-if="editState.img" dense class="justify-center">
+            <v-col cols="3">
+              <h3>画像のプレビュー</h3>
+            </v-col>
+            <v-col cols="12">
+              <v-img :src="editState.img" />
+            </v-col>
+          </v-row>
         </v-container>
       </v-card-text>
       <v-card-actions class="justify-center">
