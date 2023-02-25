@@ -1,14 +1,12 @@
 <template>
   <v-dialog
+    :width="$vuetify.breakpoint.width > 500 ? 600 : 300"
     overlay-opacity="0.5"
-    width="80%"
-    max-width="600px"
-    eager
     :value="dialog"
     @click:outside="close"
   >
-    <v-card class="pa-0 ma-0">
-      <v-img :src="menu.img" contain></v-img>
+    <v-card class="menu_card pa-0 ma-0">
+      <v-img height="50%" cover :src="menu.img"></v-img>
       <v-card-title
         >{{ menu.name }}<v-spacer></v-spacer
         ><span>{{ menu.price }}円</span></v-card-title
@@ -70,17 +68,16 @@ export default defineComponent<DetailMenuDialogProps>({
 </script>
 
 <style lang="scss" scoped>
-.menu_bar_title {
-  font-size: 16px !important;
-  font-style: normal;
-  font-weight: 600;
+@media screen and (max-width: 767px) {
+  .menu_card {
+    height: 450px;
+    width: 300px;
+  }
 }
-
-[class*='caretLeft_icon'] {
-  transition: all 0.2s ease-out;
-}
-
-.caretLeft_icon-active {
-  transform: rotate(180deg);
+@media screen and (min-width: 767px) {
+  .menu_card {
+    width: 600px;
+    height: 600px;
+  }
 }
 </style>

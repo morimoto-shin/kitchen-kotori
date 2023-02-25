@@ -21,7 +21,7 @@
     <v-app-bar fixed flat app nav src="img/bg_wood.png">
       <img src="/icon/logo.svg" width="45px" height="45px" />
       <v-toolbar-title>
-        <img @click="moveHomePage" src="/icon/logo_text.svg" height="45px" />
+        <img src="/icon/logo_text.svg" height="45px" @click="moveHomePage" />
       </v-toolbar-title>
       <v-spacer />
       <v-app-bar-nav-icon color="primary" @click.stop="switchNav" />
@@ -40,13 +40,7 @@
     </v-btn>
 
     <v-footer class="pa-0 ma-0">
-      <v-card
-        flat
-        tile
-        img="img/bg_wood.png"
-        class="text-center"
-        width="100%"
-      >
+      <v-card flat tile img="img/bg_wood.png" class="text-center" width="100%">
         <v-card-text>
           <v-btn
             v-for="sns in snsIcons"
