@@ -89,14 +89,6 @@
               ></v-select>
             </v-col>
           </v-row>
-          <v-row dense class="justify-center">
-            <v-col cols="3">
-              <h3>画像のプレビュー</h3>
-            </v-col>
-            <v-col cols="12">
-              <v-img :src="editState.img" />
-            </v-col>
-          </v-row>
         </v-container>
       </v-card-text>
       <v-card-actions class="justify-center">
@@ -137,19 +129,18 @@ export default defineComponent<EditMenuDialogProps>({
       () => props.menu,
       () => {
         editState.value = JSON.parse(JSON.stringify(props.menu))
+        filePayload.value = {}
       }
     )
 
-    const setImage = async (file: File) => {
-      if (editState.value.img) {
-        console.log(`menu/${editState.value.id}`)
+    const setImage = async () => {
+      if (filePayload.value && editState.value.img !== '') {
         await deleteFile(`menu/${editState.value.id}`)
       }
-      if (!file) {
-        editState.value.img = ''
-        return
-      }
-      const fileUrl = await uploadFile(`menu/${editState.value.id}`, file)
+      const fileUrl = await uploadFile(
+        `menu/${editState.value.id}`,
+        filePayload.value
+      )
       editState.value.img = fileUrl
     }
 
@@ -157,7 +148,8 @@ export default defineComponent<EditMenuDialogProps>({
       emit('close')
     }
 
-    const update = () => {
+    const update = async () => {
+      await setImage()
       emit('update', JSON.parse(JSON.stringify(editState.value)))
       close()
     }
