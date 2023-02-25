@@ -34,7 +34,7 @@ export default defineComponent({
   },
   setup() {
     const pageTitle = 'MENU' as const
-    useMeta(() => ({ title: 'メニュー | カフェ | 岡山県津山市' }))
+    useMeta(() => ({ title: 'キッチン小鳥 | メニュー | 岡山県津山市' }))
 
     const state = reactive<State>({
       menus: [],

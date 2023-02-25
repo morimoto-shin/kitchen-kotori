@@ -29,17 +29,15 @@
     <v-main>
       <Nuxt />
     </v-main>
-    <div v-if="$vuetify.breakpoint.mobile">
-      <v-btn
-        class="fixed_btn"
-        large
-        icon
-        retain-focus-on-click
-        href="tel:0868-32-8129"
-      >
-        <v-icon color="primary">mdi-phone</v-icon>
-      </v-btn>
-    </div>
+    <v-btn
+      class="fixed_btn"
+      large
+      icon
+      retain-focus-on-click
+      href="tel:0868-32-8129"
+    >
+      <v-icon color="primary">mdi-phone</v-icon>
+    </v-btn>
 
     <v-footer class="pa-0 ma-0">
       <v-card
@@ -65,7 +63,7 @@
             </v-icon>
           </v-btn>
         </v-card-text>
-        <span class="list_text">&copy; {{ currentYear }}</span>
+        <span class="list_text">&copy;KITCHEN KOTORI {{ currentYear }}</span>
       </v-card>
     </v-footer>
   </v-app>
@@ -98,11 +96,6 @@ export default defineComponent({
         icon: 'mdi-coffee',
         title: 'MENU',
         to: '/menu',
-      },
-      {
-        icon: 'mdi-map-marker',
-        title: 'ACCESS',
-        to: '/access',
       },
       {
         icon: 'mdi-information',

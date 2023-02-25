@@ -1,5 +1,5 @@
 <template>
-  <v-row justify="center" align="center">
+  <v-row>
     <v-spacer />
     <v-col cols="8" md="6" align="center">
       <h1 class="mb-2 page_title">{{ pageTitle }}</h1>

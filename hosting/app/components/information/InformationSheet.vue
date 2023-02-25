@@ -7,6 +7,7 @@
       :value="item.value"
       :attention="item.attention"
     />
+    <AccessSheet />
     <GoogleScheduleCalender />
   </v-sheet>
 </template>
@@ -15,11 +16,13 @@
 import { defineComponent } from '@nuxtjs/composition-api'
 import InformationSheetItem from '@/components/information/InformationSheetItem.vue'
 import GoogleScheduleCalender from '@/components/information/GoogleScheduleCalender.vue'
+import AccessSheet from '@/components/information/AccessSheet.vue'
 
 export default defineComponent({
   components: {
     InformationSheetItem,
     GoogleScheduleCalender,
+    AccessSheet,
   },
   setup() {
     const items = [
@@ -28,7 +31,6 @@ export default defineComponent({
         value: '0868-32-8129',
         attention: 'ホームページを見たとお伝えいただくとスムーズです。',
       },
-      { label: '住所', value: '岡山県津山市川崎1765-1', attention: '' },
       { label: '定休日', value: '不定休', attention: '' },
       { label: '営業時間', value: '10:00 ~ 17:00', attention: '' },
       { label: '席数', value: '22席', attention: '' },

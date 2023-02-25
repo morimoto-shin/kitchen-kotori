@@ -23,7 +23,9 @@ export default defineComponent({
   },
   setup() {
     const pageTitle = 'INFORMATION' as const
-    useMeta(() => ({ title: 'インフォメーション | カフェ | 岡山県津山市' }))
+    useMeta(() => ({
+      title: 'キッチン小鳥 | インフォメーション | 岡山県津山市',
+    }))
     return {
       pageTitle,
     }
