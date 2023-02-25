@@ -4,6 +4,9 @@
     <v-row justify="center" align="center">
       <v-spacer />
       <v-col v-if="state.menus.length" cols="8" md="6" align="center">
+        <span class="span_text"
+          >メニュー名をクリックすると詳細が確認できます</span
+        >
         <MenuCard :menus="state.menus" />
       </v-col>
       <v-spacer />
@@ -34,7 +37,7 @@ export default defineComponent({
   },
   setup() {
     const pageTitle = 'MENU' as const
-    useMeta(() => ({ title: 'メニュー | カフェ | 岡山県津山市' }))
+    useMeta(() => ({ title: 'キッチン小鳥 | メニュー | 岡山県津山市' }))
 
     const state = reactive<State>({
       menus: [],
@@ -64,4 +67,9 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.span_text {
+  font-size: 14px;
+  color: gray;
+}
+</style>

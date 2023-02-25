@@ -18,10 +18,10 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar fixed flat app nav color="white" src="img/bg_wood.png">
+    <v-app-bar fixed flat app nav src="img/bg_wood.png">
       <img src="/icon/logo.svg" width="45px" height="45px" />
       <v-toolbar-title>
-        <img src="/icon/logo_text.svg" height="45px" />
+        <img src="/icon/logo_text.svg" height="45px" @click="moveHomePage" />
       </v-toolbar-title>
       <v-spacer />
       <v-app-bar-nav-icon color="primary" @click.stop="switchNav" />
@@ -29,27 +29,18 @@
     <v-main>
       <Nuxt />
     </v-main>
-    <div v-if="$vuetify.breakpoint.mobile">
-      <v-btn
-        class="fixed_btn"
-        large
-        icon
-        retain-focus-on-click
-        href="tel:0868-32-8129"
-      >
-        <v-icon color="primary">mdi-phone</v-icon>
-      </v-btn>
-    </div>
+    <v-btn
+      class="fixed_btn"
+      large
+      icon
+      retain-focus-on-click
+      href="tel:0868-32-8129"
+    >
+      <v-icon color="primary">mdi-phone</v-icon>
+    </v-btn>
 
     <v-footer class="pa-0 ma-0">
-      <v-card
-        flat
-        tile
-        img="img/bg_wood.png"
-        class="text-center"
-        color="primary"
-        width="100%"
-      >
+      <v-card flat tile img="img/bg_wood.png" class="text-center" width="100%">
         <v-card-text>
           <v-btn
             v-for="sns in snsIcons"
@@ -65,7 +56,7 @@
             </v-icon>
           </v-btn>
         </v-card-text>
-        <span class="list_text">&copy; {{ currentYear }}</span>
+        <span class="list_text">&copy;KITCHEN KOTORI {{ currentYear }}</span>
       </v-card>
     </v-footer>
   </v-app>
@@ -78,12 +69,13 @@ import {
   computed,
   useRoute,
   useMeta,
+  useRouter,
 } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   setup() {
     const route = useRoute()
-
+    const router = useRouter()
     const currentYear = computed(() => new Date().getFullYear())
     const fixed = false as const
     const drawer = ref(false)
@@ -98,11 +90,6 @@ export default defineComponent({
         icon: 'mdi-coffee',
         title: 'MENU',
         to: '/menu',
-      },
-      {
-        icon: 'mdi-map-marker',
-        title: 'ACCESS',
-        to: '/access',
       },
       {
         icon: 'mdi-information',
@@ -120,7 +107,9 @@ export default defineComponent({
       // { icon: 'mdi-phone', src: ''}
     ] as const
 
-    console.log(route.value.path)
+    const moveHomePage = () => {
+      router.push('/')
+    }
     const currentPageForCanonical = computed(() => route.value.path.slice(1))
     useMeta(() => ({
       link: [
@@ -142,6 +131,7 @@ export default defineComponent({
       fixed,
       snsIcons,
       switchNav,
+      moveHomePage,
     }
   },
   head: {},
