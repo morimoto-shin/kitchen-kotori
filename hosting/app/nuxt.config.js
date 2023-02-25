@@ -19,7 +19,7 @@ export default {
         hid: 'description',
         name: 'description',
         content:
-          '岡山県・津山市カフェ/キッチン小鳥/キッチン小鳥　ランチ テイクアウトあります。',
+          '岡山県・津山市カフェ/キッチン小鳥/キッチン小鳥 ランチ テイクアウトあります。',
       },
       {
         name: 'keyword',

@@ -29,7 +29,7 @@
       </v-row>
       <v-row>
         <v-col align="center">
-          <a href="/menu">メニューを見る</a>
+          <a @click="moveMenuPage">メニューを見る</a>
         </v-col>
       </v-row>
     </v-container>
@@ -37,20 +37,29 @@
 </template>
 
 <script>
-import { defineComponent, useMeta } from '@nuxtjs/composition-api'
+import { defineComponent, useMeta, useRouter } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   setup() {
     const carouselItems = [
       { name: 'home_1', src: '/img/home_1.png' },
-      // { name: 'home_2', src: '/img/home_2.png' },
-      // { name: 'home_3', src: '/img/home_3.png' },
-      // { name: 'home_4', src: '/img/home_4.png' },
-      // { name: 'home_5', src: '/img/home_5.png' },
+      { name: 'home_2', src: '/img/home_2.png' },
+      { name: 'home_3', src: '/img/home_3.png' },
+      { name: 'home_4', src: '/img/home_4.png' },
+      { name: 'home_5', src: '/img/home_5.png' },
     ]
+
+    const router = useRouter()
+
+    const moveMenuPage = () => {
+      router.push('/menu')
+    }
+
     useMeta(() => ({ title: 'キッチン小鳥 | 岡山県津山市' }))
+
     return {
       carouselItems,
+      moveMenuPage,
     }
   },
   head: {},

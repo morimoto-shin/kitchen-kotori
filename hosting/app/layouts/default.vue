@@ -21,7 +21,7 @@
     <v-app-bar fixed flat app nav color="white" src="img/bg_wood.png">
       <img src="/icon/logo.svg" width="45px" height="45px" />
       <v-toolbar-title>
-        <img src="/icon/logo_text.svg" height="45px" />
+        <img @click="moveHomePage" src="/icon/logo_text.svg" height="45px" />
       </v-toolbar-title>
       <v-spacer />
       <v-app-bar-nav-icon color="primary" @click.stop="switchNav" />
@@ -76,12 +76,13 @@ import {
   computed,
   useRoute,
   useMeta,
+  useRouter,
 } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   setup() {
     const route = useRoute()
-
+    const router = useRouter()
     const currentYear = computed(() => new Date().getFullYear())
     const fixed = false as const
     const drawer = ref(false)
@@ -113,7 +114,9 @@ export default defineComponent({
       // { icon: 'mdi-phone', src: ''}
     ] as const
 
-    console.log(route.value.path)
+    const moveHomePage = () => {
+      router.push('/')
+    }
     const currentPageForCanonical = computed(() => route.value.path.slice(1))
     useMeta(() => ({
       link: [
@@ -135,6 +138,7 @@ export default defineComponent({
       fixed,
       snsIcons,
       switchNav,
+      moveHomePage,
     }
   },
   head: {},
