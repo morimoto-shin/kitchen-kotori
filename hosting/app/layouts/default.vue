@@ -18,7 +18,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar fixed flat app nav color="white" src="img/bg_wood.png">
+    <v-app-bar fixed flat app nav src="img/bg_wood.png">
       <img src="/icon/logo.svg" width="45px" height="45px" />
       <v-toolbar-title>
         <img @click="moveHomePage" src="/icon/logo_text.svg" height="45px" />
@@ -45,7 +45,6 @@
         tile
         img="img/bg_wood.png"
         class="text-center"
-        color="primary"
         width="100%"
       >
         <v-card-text>
