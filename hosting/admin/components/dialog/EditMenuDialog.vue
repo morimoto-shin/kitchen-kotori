@@ -60,7 +60,6 @@
                 v-model="filePayload"
                 accept="image/*"
                 prepend-icon="mdi-image"
-                @change="setImage"
               />
             </v-col>
           </v-row>
