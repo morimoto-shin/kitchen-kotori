@@ -1,0 +1,19 @@
+{
+  "projects": {
+    "default": "kitchen-kotori",
+    "dev": "kitchen-kotori",
+    "prod": "kitchen-kotori-prod"
+  },
+  "targets": {
+    "kitchen-kotori": {
+      "hosting": {
+        "admin": [
+          "kitchen-kotori-admin"
+        ],
+        "app": [
+          "kitchen-kotori"
+        ]
+      }
+    }
+  }
+}

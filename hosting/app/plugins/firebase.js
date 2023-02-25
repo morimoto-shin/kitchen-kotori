@@ -15,8 +15,8 @@ if (!firebase.apps.length) {
       projectId: 'kitchen-kotori',
       storageBucket: 'kitchen-kotori.appspot.com',
       messagingSenderId: '770328082740',
-      appId: '1:770328082740:web:d657d0878889096ab2cd61',
-      measurementId: 'G-DP63DR7XTK',
+      appId: '1:770328082740:web:95b10a604b656b49b2cd61',
+      measurementId: 'G-ETLMGLD5KW',
     }
   } else {
     console.log('🔥 Firebase ホスティング環境')
