@@ -70,14 +70,14 @@ export default defineComponent<DetailMenuDialogProps>({
 <style lang="scss" scoped>
 @media screen and (max-width: 767px) {
   .menu_card {
-    height: 450px;
     width: 300px;
+    height: 450px;
   }
 }
 @media screen and (min-width: 767px) {
   .menu_card {
     width: 600px;
-    height: 600px;
+    height: 900px;
   }
 }
 </style>
